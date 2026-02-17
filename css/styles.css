@@ -1,0 +1,333 @@
+:root {
+    --main-font-family: "Verdana", "Helvetica", "Arial", sans-serif;
+    --header-title-fm: "Lucida Console", "Courier New", monospace;
+    /*base font sizes*/
+    --base-font-size: 16px;
+    --small-font-size: 14px;
+    --h1-size: 28px;
+    --h2-size: 22px;
+    --h3-size: 16px;
+    --main-line-height: 1.5;
+
+    /*base bg colors*/
+    --bg-main: #0f172a;
+    --bg-layout: #0f172a;
+    --bg-main-block: #1e293b;
+
+    /*base text color*/
+    --main-text: #e2e8f0;
+    --secondary-text: #0c0d11;
+    --header-title: #A9A9A9;
+
+    /*border color*/
+    --border-color: #334155;
+
+    /*header btn hover*/
+    --header-btn-hov: #1e293b;
+
+    /*main block btns*/
+    --main-block-btn-bg: #64748b;
+    --main-block-btn-bg-hov: #1e293b;
+}
+
+/* reset blocks */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--main-font-family);
+    background-color: var(--bg-main);
+    color: var(--main-text);
+    font-size: var(--base-font-size);
+    line-height: var(--main-line-height);
+}
+
+/*h1, h2, h3*/
+h1 {
+    font-size: var(--h1-size);
+}
+
+h2 {
+    font-size: var(--h2-size);
+}
+
+h3 {
+    font-size: var(--h3-size);
+}
+
+/*layout*/
+.layout {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--bg-layout);
+    min-height: 400px;
+    border-left: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    border-radius: 0 0 8px 8px;
+    padding-bottom: 30px;
+}
+
+/*header: games list(from db) as nav too*/
+.header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 8px 5px;
+    border-bottom: 1px dashed var(--border-color);;
+}
+
+.header a {
+    text-decoration: none;
+    color: var(--main-text);
+}
+
+/*select game from db(works as nav on site)*/
+.header button {
+    background-color: var(--bg-main);
+    color: var(--main-text);
+    border: none;
+    font-size: var(--base-font-size);
+    cursor: pointer;
+}
+
+.header button:hover {
+    background-color: var(--main-text);
+    color: var(--header-btn-hov);
+}
+
+/*games list as btns (takes from db)
+!nav, header__title, logo__pic - 33% width for correct space-between*/
+nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 33%;
+}
+
+.header__title, .logo__pic {
+    max-width: 33%;
+}
+
+/*change title color*/
+.header__title a {
+    font-family: var(--header-title-fm);
+    color: var(--header-title);
+}
+
+/*additional button style*/
+.btn-56,
+.btn-56 *,
+.btn-56 :after,
+.btn-56 :before,
+.btn-56:after,
+.btn-56:before {
+     border: 0 solid;
+     box-sizing: border-box;
+}
+
+.btn-56 {
+    -webkit-tap-highlight-color: transparent;
+      -webkit-appearance: button;
+     background-image: none;
+     cursor: pointer;
+     font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+     Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+     Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+     margin: 0;
+    -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
+    padding: 0;
+}
+
+.btn-56:-moz-focusring {
+    outline: auto;
+}
+
+.btn-56 {
+    border: 1px solid;
+    border-radius: 100px;
+    box-sizing: border-box;
+    display: block;
+    font-weight: 900;
+    -webkit-mask-image: none;
+    overflow: hidden;
+    padding: 10px 20px;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.btn-56:hover {
+    -webkit-animation: pulse 0.5s;
+    animation: pulse 0.8s;
+    box-shadow: 0 0 0 2em transparent;
+}
+@-webkit-keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #fff;
+  }
+}
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #fff;
+  }
+}
+
+/*Main block with filters, stats etc*/
+main {
+    padding: 30px 40px;
+    background-color: var(--bg-main-block);
+    color: var(--main-text);
+    text-align: center;
+    height: auto;
+    min-height: 300px;
+}
+
+/*block include: game title + filters(average for all, per month etc)*/
+.main__title {
+    display: flex;
+    flex-direction: column;
+}
+
+.main__content {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    overflow-y: auto;
+}
+
+.main__title-filters {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+}
+
+.main__content-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+/*main block btns (for filters, stats)*/
+main button {
+    width: clamp(100px, auto, 150px);
+    text-align: center;
+    display: inline-block;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 15px;
+    background-color: var(--main-block-btn-bg);
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border: 1px solid transparent;
+}
+
+main button:hover {
+    background-color: var(--main-block-btn-bg-hov);
+    color: var(--main-text);
+    border: 1px solid;
+    border-radius: 30px;
+    cursor: pointer;
+    border-color: var(--border-color);
+}
+
+/*admin menu part*/
+.admin-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.admin-btn {
+    display: inline-block;
+    width: clamp(130px, 30%, 180px);
+    padding: 10px 15px;
+    border-radius: 30px;
+    background-color: var(--main-block-btn-bg);
+    text-decoration: none;
+    color: var(--secondary-text);
+    text-align: center;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border: 1px solid transparent;
+    margin: 0 auto;
+}
+
+.admin-btn:hover {
+    background-color: var(--main-block-btn-bg-hov);
+    color: var(--main-text);
+    border-color: var(--border-color);
+}
+
+/*admin forms block */
+.admin__add-game, .admin__add-record, .del-form, .parser-form, .month-info {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: clamp(250px, 50%, 350px);
+    gap: 10px;
+    margin-bottom: 50px;
+}
+
+.del-form.hidden {
+    visibility: hidden;
+}
+
+.parser-form.hidden {
+    visibility: hidden;
+}
+
+/* INPUT/SELECT in forms */
+
+input, select {
+    height: 38px;
+    padding: 0 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+/* MONTH input */
+input[type="month"] {
+    padding-right: 6px;
+}
+
+
+
+/*back button style*/
+.back-btn {
+    width: clamp(100px, 20%, 150px);
+    color: var(--secondary-text);
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 15px;
+    background-color: var(--main-block-btn-bg);
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.back-btn:hover {
+    background-color: var(--secondary-text);
+    color: var(--main-text);
+    border: 1px solid;
+    border-radius: 20px;
+    cursor: pointer;
+    border-color: var(--border-color);
+}
+
+.main-page ul{
+    list-style: none;
+    padding: 0;
+}
+
+.main-page li::before {
+    content: "•";
+    color: #4da3ff;
+    margin-right: 8px;
+}
+                
